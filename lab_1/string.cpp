@@ -134,17 +134,15 @@ bool String::Empty() const {
     return size_ == 0;
 }
 
-// Оператор [] (const версия)
 char String::operator[](size_t index) const {
     return data_[index];
 }
 
-// Оператор [] (не-const версия)
 char& String::operator[](size_t index) {
     return data_[index];
 }
 
-// RTrim
+
 void String::RTrim(char symbol) {
     while (size_ > 0 && data_[size_ - 1] == symbol) {
         data_[size_ - 1] = '\0';
@@ -152,7 +150,7 @@ void String::RTrim(char symbol) {
     }
 }
 
-// LTrim (исправлена)
+
 void String::LTrim(char symbol) {
     size_t start = 0;
     while (start < size_ && data_[start] == symbol) {
@@ -169,7 +167,6 @@ void String::LTrim(char symbol) {
     }
 }
 
-// swap
 void String::swap(String& oth) {
     std::swap(data_, oth.data_);
     std::swap(size_, oth.size_);
@@ -182,7 +179,6 @@ String operator+(const String& a, const String& b) {
     return result;
 }
 
-// Оператор * (исправлен)
 String operator*(const String& a, unsigned int b) {
     String result = a;
     result *= b;
@@ -203,4 +199,12 @@ bool operator>(const String& a, const String& b) {
 std::ostream& operator<<(std::ostream& out, const String& str) {
     out << (str.data_ ? str.data_ : "");
     return out;
+}
+
+
+String::String(String&& rhs) noexcept
+    : data_(rhs.data_), size_(rhs.size_)
+{
+    rhs.data_ = nullptr;
+    rhs.size_ = 0;
 }
