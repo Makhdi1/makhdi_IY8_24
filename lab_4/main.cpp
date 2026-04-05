@@ -1,44 +1,93 @@
 #include <iostream>
 using namespace std;
 
-class point
+class Square
 {
-    double x, y;
+protected:
+    double side;
+
 public:
-    point(double x, double y)
+    Square(double s) : side(s) {}
+
+    virtual double calc() const
     {
-        this->x = x;
-        this->y = y;
+        return side * side;
     }
-    virtual void print()
+
+    void print() const
     {
-        cout << "\nx=" << x << " y=" << y;
+        cout << "Сторона квадрата: " << side << endl;
+        cout << "Площадь квадрата: " << calc() << endl;
     }
 };
 
-class point3d : public point
+class Cube : public Square
 {
-    double z;
 public:
-    point3d(double x, double y, double z) : point(x, y)
+    Cube(double s) : Square(s) {}
+
+    virtual double calc() const override
     {
-        this->z = z;
+        double baseArea = Square::calc();
+        return side * baseArea;
     }
-    void print()
+
+    void print() const
     {
-        point::print();
-        cout << " z=" << z;
+        cout << "Ребро куба: " << side << endl;
+        cout << "Объём куба: " << calc() << endl;
     }
 };
 
 int main()
 {
-    point p1(1, 2);
-    point3d p3(3, 4, 5);
-    point *pp;
-    pp = &p1;
-    pp->print();
-    pp = &p3;
-    pp->print();
+    Square sq(3);
+    Cube cb(3);
+
+    cout << "=== Прямой вызов методов для объектов ===" << endl;
+    sq.print();
+    cout << endl;
+    cb.print();
+
+    cout << "\n=== Демонстрация динамического полиморфизма ===" << endl;
+    Square* ptr;
+    ptr = &sq;
+    ptr->print();
+
+    ptr = &cb;
+    ptr->print();
+
+    cout << "\n=== Демонстрация статического полиморфизма ===" << endl;
+
+    class SquareStatic
+    {
+    protected:
+        double side;
+    public:
+        SquareStatic(double s) : side(s) {}
+        double calc() const { return side * side; }
+        void print() const { cout << "Площадь: " << calc() << endl; }
+    };
+
+    class CubeStatic : public SquareStatic
+    {
+    public:
+        CubeStatic(double s) : SquareStatic(s) {}
+        double calc() const { return side * side * side; }
+        void print() const { cout << "Объём: " << calc() << endl; }
+    };
+
+    SquareStatic* p;
+    SquareStatic sqs(3);
+    CubeStatic cbs(3);
+
+    p = &sqs;
+    p->print();
+
+    p = &cbs;
+    p->print();
+
+    cout << "\nНажмите Enter для выхода...";
+    cin.get();
     return 0;
 }
