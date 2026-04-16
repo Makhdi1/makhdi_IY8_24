@@ -1,0 +1,14 @@
+Ishodniy konteiner (vector):
+Model: Toyota, Rashod (trassa/gorod/smesh): 5.5/8/6.5, Max skorost: 220, Moshnost: 150
+Model: BMW, Rashod (trassa/gorod/smesh): 6/10/7.5, Max skorost: 250, Moshnost: 200
+Model: Audi, Rashod (trassa/gorod/smesh): 5/9/7, Max skorost: 240, Moshnost: 180
+
+Konteiner posle sortirovki po modeli:
+Model: Audi, Rashod (trassa/gorod/smesh): 5/9/7, Max skorost: 240, Moshnost: 180
+Model: BMW, Rashod (trassa/gorod/smesh): 6/10/7.5, Max skorost: 250, Moshnost: 200
+Model: Toyota, Rashod (trassa/gorod/smesh): 5.5/8/6.5, Max skorost: 220, Moshnost: 150
+
+Skopirovanniy konteiner (deque):
+Model: Audi, Rashod (trassa/gorod/smesh): 5/9/7, Max skorost: 240, Moshnost: 180
+Model: BMW, Rashod (trassa/gorod/smesh): 6/10/7.5, Max skorost: 250, Moshnost: 200
+Model: Toyota, Rashod (trassa/gorod/smesh): 5.5/8/6.5, Max skorost: 220, Moshnost: 150
