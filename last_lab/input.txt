@@ -1,0 +1,4 @@
+Ivanov  A-12  4.5
+Petrov  B-7   3.8
+Sidorov A-12  4.9
+Antonov C-3   4.1

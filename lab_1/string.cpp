@@ -1,7 +1,6 @@
-#include "string.hpp"
+#include "string.h"
 #include <iostream>
 #include <cstring>
-#include <algorithm>
 
 // Деструктор
 String::~String() {
